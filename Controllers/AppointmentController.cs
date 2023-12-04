@@ -19,12 +19,19 @@ namespace Appointments.Controllers
         [Authorize]
         public IActionResult Index()
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            string userStringId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
             var userAppointments = _context.Appointments
-                .Where(a => a.UserId == userId)
+                .Where(a => a.User.Id == userStringId)
                 .ToList();
 
             return View(userAppointments);
+        }
+
+        [Authorize]
+        public IActionResult Book()
+        {
+            return View();
         }
 
         [Authorize(Roles = "Admin")]

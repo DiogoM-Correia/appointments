@@ -1,6 +1,8 @@
 ﻿using Appointments.Data;
 using Appointments.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Appointments
 {
